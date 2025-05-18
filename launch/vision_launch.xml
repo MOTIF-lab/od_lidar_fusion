@@ -1,0 +1,14 @@
+<launch>
+  <node pkg="usb_cam" exec="usb_cam_node_exe" name="usbcam" namespace="cam">
+    <param from="/home/linux/ws_livox/launch/c920.launch.yaml" />
+  </node>
+
+  <node pkg="image_proc" exec="rectify_node" name="image_proc_rect" namespace="cam">
+    <remap from="image" to="/cam/image_raw" />
+    <remap from="camera_info" to="/cam/camera_info" />
+  </node>
+
+  <node pkg="tf2_ros" exec="static_transform_publisher" name="lidar_camera_tf_publisher"
+          args="-0.07133886811939455 0.05215759108248205 0.07042566622467987 -0.49848021662437386 0.541814791282095 -0.5052786147334285 0.45016411126957356 livox_frame camera" />
+
+</launch>

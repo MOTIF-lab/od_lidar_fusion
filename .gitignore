@@ -1,0 +1,9 @@
+*.pt
+build/
+install/
+log/
+.vscode/
+livox_preprocessed/
+*/build/
+*/install/
+*/log/
